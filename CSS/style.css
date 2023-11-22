@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* título */
+
+header {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    background-color: #eaeaea;
+    border-bottom: 2px solid #0f0c16;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header h1 {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+    text-shadow: 1px 1px 1px #00000080;
+}
+
+/* container-principal */
+
+#container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    width: 100%;
+    background-color: #2f2e41;
+}
+
+/* botão música */
+#box {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    visibility: visible;
+}
+
+#box h2 {
+    color: #fff;
+    text-shadow: 1px 3px 1px #090909;
+    margin-bottom: 0.5rem;
+}
+
+#box #btn-music {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #FFD700;
+    border-radius: 4px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+/* carta */
+
+.flip-card {
+    margin: auto auto;
+    perspective: 1000px;
+}
+
+.flip-card:active .inner {
+    transform: rotateY(-180deg);
+}
+
+.flip-card .back {
+    transform: rotateY(-180deg);
+}
+
+.inner {
+    height: 530px;
+    width: 330px;
+    border: 10px solid transparent;
+    border-image: linear-gradient(45deg, #948010, #FFD700, #000, #948010, #fff) 10;
+    border-radius: 10px;
+    box-shadow: 0 0 30px 7px #fff;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+.back,
+.front {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.capa {
+    width: 310px;
+    height: 510px;
+    object-fit: cover;
+}
+
+/* botões */
+label {
+    display: inline-block;
+    width: 110px;
+    height: 45px;
+    font-size: 24px;
+    font-family: 'Star Jedi', Georgia, 'Times New Roman', Times, serif;
+    border: 1px solid #FFD700;
+    border-radius: 6px;
+    color: #fff;
+    background-color: #000;
+    text-shadow: 2px 2px 4px #FFD700;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+    margin-right: 10px;
+    line-height: 40px;
+    transition: 0.5s;
+}
+
+label:hover {
+    background-color: #3b3b3b;
+    color: #fff;
+    text-shadow: 3px 3px 5px #FFD700;
+    transition: 0.2s;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + label {
+    background-color: #fff;
+    color: #000;
+    text-shadow: 2px 2px 4px #948010;
+    border: 1px solid #fff;
+    box-shadow: 0px 0px 10px #fff;
+}
+
+#btns {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+#btns #jedi,
+#btns #sith {
+    margin: auto 10px;
+}
+
+/* > 1024px box */
+
+@media(max-width: 820px) {
+    header h1 {
+        font-size: 0.8cm;
+    }
+}
+
+/* responsividade */
+
+@media(max-height: 770px) {
+   #btns {
+    margin: 20px auto;
+   }
+   .inner {
+    height: 410px;
+    width: 300px;
+   }
+   .capa {
+    height: 390px;
+    width: 280px;
+   }
+}
+
+@media(max-height: 680px) {
+    .inner {
+        height: 310px;
+        width: 200px;
+    }
+    .capa {
+        height: 290px;
+        width: 180px;
+    }
+    #box {
+        margin-top: 1rem;
+    }
+}
+
+@media(height:800px) and (width: 1280px) {
+    #box {
+        margin-top: 1.5rem;
+    }
+    #btns {
+        margin-top: 15px;
+    }
+}

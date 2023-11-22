@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Card</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <h1>Veja quem será o seu mestre</h1>
+    </header>
+
+    <div id="container">
+        <div id="btns">
+            <input type="radio" id="jedi" name="person">
+            <label for="jedi">Jedi $</label>
+            <input type="radio" id="sith" name="person">
+            <label for="sith">Sith #</label>
+        </div>
+
+        <div id="box">
+            <h2>Tocar música?</h2>
+            <input id="btn-music" type="submit" value="►">
+        </div>
+
+        <div class="flip-card">
+            <div class="inner">
+                <div class="front">
+                    <img class="capa" src="img/capa.jpg" alt="Carta">
+                </div>
+                <div class="back">
+                    <img class="capa" id="imagem-sorteada" src="img/capa2.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/script.js"></script>
+</body>
+</html>
