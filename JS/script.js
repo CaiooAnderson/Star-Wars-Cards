@@ -15,6 +15,14 @@ class Sortear {
         this.adicionarEventoDeGirarCarta();
     }
 
+    adicionarEventoDeGirarCarta() {
+        const carta = document.querySelector('.flip-card');
+        carta.addEventListener('click', () => {
+            this.botaoJedi.checked = false;
+            this.botaoSith.checked = false;
+        });
+    }
+
     sortearImagem(arrayImgs, nome){
         const indiceAleatorio = Math.floor(Math.random() * arrayImgs.length);
         
@@ -26,36 +34,50 @@ class Sortear {
             elementoImagem.src = `img/persons-sith/${arrayImgs[indiceAleatorio]}`;
     }
     
-    adicionarEventosClick(){
+    adicionarEventosClick() {
         this.botaoJedi.addEventListener('click', () => {
             this.sortearImagem(this.imagensJedi, 'jedi');
             if (this.botaoMusica.value === this.musica.value) {
                 this.trocarMusica(this.musicaJedi);
-            } 
+            }
         });
-        
+
         this.botaoSith.addEventListener('click', () => {
             this.sortearImagem(this.imagensSith, 'sith');
             if (this.botaoMusica.value === this.musica.value) {
                 this.trocarMusica(this.musicaSith);
             }
         });
-        
-        this.botaoMusica.addEventListener('click', () => this.tocarMusica());
-    }
 
-    adicionarEventoDeGirarCarta() {
-        const carta = document.querySelector('.flip-card');
-        carta.addEventListener('click', () => {
-            this.botaoJedi.checked = false;
-            this.botaoSith.checked = false;
+        this.botaoMusica.addEventListener('click', () => {
+            if (this.botaoJedi.checked) {
+                this.trocarMusica(this.musicaJedi);
+            } else if (this.botaoSith.checked) {
+                this.trocarMusica(this.musicaSith);
+            } else {
+                this.trocarMusica(this.musica);
+            }
         });
     }
 
+    atualizarTextoBotaoMusica() {
+        const botaoMusica = document.getElementById('btn-music');
+        if (this.musica.paused) {
+            botaoMusica.value = "►";
+        } else {
+            botaoMusica.value = "❚❚";
+        }
+    }
+
     trocarMusica(novaMusica) {
-        this.musica.pause();
-        this.musica = novaMusica;
-        this.tocarMusica();
+        if (this.musica === novaMusica) {
+            this.tocarMusica();
+        } else {
+            this.musica.pause();
+            this.musica.currentTime = 0;
+            this.musica = novaMusica;
+            this.tocarMusica();
+        }
     }
 
     tocarMusica() {
@@ -64,8 +86,10 @@ class Sortear {
         } else {
             this.musica.pause();
         }
-        
+        this.atualizarTextoBotaoMusica();
+        this.musica.currentTime = 0;
     }
 }
 
 window.addEventListener('load', () => new Sortear());
+
